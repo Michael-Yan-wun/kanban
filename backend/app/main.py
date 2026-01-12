@@ -9,11 +9,9 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Kanban API", version="1.0.0")
 
 # 設定 CORS (允許前端存取)
-origins = [
-    "http://localhost:5173", # Vite Default
-    "http://127.0.0.1:5173",
-    "*" # 開發階段先全開
-]
+# 設定 CORS (允許前端存取)
+# 部署階段：暫時全開以避免連線問題，之後可改回 specific origins
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
